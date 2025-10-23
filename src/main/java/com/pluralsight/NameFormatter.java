@@ -38,7 +38,7 @@ public class NameFormatter {
         return sb.toString();
     }
 
-    //take a full name
+    //take full names
     public static String format(String fullName) {
         // Split into main name and suffix
         String[] parts = fullName.split(",", 2);
