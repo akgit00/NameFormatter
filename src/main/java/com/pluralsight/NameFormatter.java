@@ -14,5 +14,28 @@ public class NameFormatter {
         // full version with prefix, middle and suffix
         public static String format(String prefix, String firstName, String middleName, String lastName, String suffix) {
             StringBuilder sb = new StringBuilder();
-    }
+            //start with last name
+            sb.append(lastName);
+
+            //add comma and prefix/first/middle
+            sb.append(", ");
+
+            if (prefix != null && !prefix.isEmpty()) {
+                sb.append(prefix).append(" ");
+            }
+
+            sb.append(firstName);
+
+            if (middleName != null && !middleName.isEmpty()) {
+                sb.append(" ").append(middleName);
+            }
+
+            //add suffix if it exists
+            if (suffix != null && !suffix.isEmpty()) {
+                sb.append(", ").append(suffix);
+            }
+
+            return sb.toString();
+        }
+
 }
