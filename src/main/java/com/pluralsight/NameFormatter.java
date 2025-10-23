@@ -20,18 +20,18 @@ public class NameFormatter {
         //add comma and prefix/first/middle
         sb.append(", ");
 
-        if (prefix != null && !prefix.isEmpty()) {
+        if (!prefix.isEmpty()) {
             sb.append(prefix).append(" ");
         }
 
         sb.append(firstName);
 
-        if (middleName != null && !middleName.isEmpty()) {
+        if (!middleName.isEmpty()) {
             sb.append(" ").append(middleName);
         }
 
         //add suffix if it exists
-        if (suffix != null && !suffix.isEmpty()) {
+        if (!suffix.isEmpty()) {
             sb.append(", ").append(suffix);
         }
 
@@ -52,6 +52,31 @@ public class NameFormatter {
         String firstName = "";
         String middleName = "";
         String lastName = "";
+
+        //nameToken possible inputs
+        if (nameTokens.length == 4) {
+            prefix = nameTokens[0];
+            firstName = nameTokens[1];
+            middleName = nameTokens[2];
+            lastName = nameTokens[3];
+
+        } else if (nameTokens.length == 3) {
+            if (nameTokens[0].endsWith(".")) {
+                prefix = nameTokens[0];
+                firstName = nameTokens[1];
+                lastName = nameTokens[2];
+
+            } else {
+                firstName = nameTokens[0];
+                middleName = nameTokens[1];
+                lastName = nameTokens[2];
+
+            }
+        } else if (nameTokens.length == 2) {
+            firstName = nameTokens[0];
+            lastName = nameTokens[1];
+        }
+        return format(prefix, firstName, middleName, lastName, suffix);
 
     }
 }
